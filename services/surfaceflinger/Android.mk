@@ -118,6 +118,7 @@ else
     LOCAL_C_INCLUDES += hardware/qcom/display/libgralloc
     LOCAL_C_INCLUDES += hardware/qcom/display/libqdutils
 endif
+    LOCAL_C_INCLUDES += vendor/qcom/opensource/display-frameworks/include
     LOCAL_SHARED_LIBRARIES += libqdutils
     LOCAL_CFLAGS += -DQTI_BSP
 endif
