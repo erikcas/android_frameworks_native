@@ -35,7 +35,7 @@
 #include <ui/Rect.h>
 
 #include <hardware/gralloc.h>
-
+#include <system/window.h>
 
 namespace android {
 // ---------------------------------------------------------------------------
@@ -188,6 +188,13 @@ status_t GraphicBufferMapper::unlockAsync(buffer_handle_t handle, int *fenceFd)
 
     ALOGW_IF(err, "unlockAsync(...) failed %d (%s)", err, strerror(-err));
     return err;
+}
+// very very very dirty
+
+extern void _ZN7android19GraphicBufferMapper4lockEPK13native_handleiRKNS_4RectEPPv(buffer_handle_t handle, int usage, const Rect& bounds, void** vaddr);
+
+extern void _ZN7android19GraphicBufferMapper4lockEPK13native_handleiRKNS_4RectEPPv(buffer_handle_t handle, int usage, const Rect& bounds, void** vaddr) {
+	_ZN7android19GraphicBufferMapper4lockEPK13native_handlejRKNS_4RectEPPv(handle, (unsigned int) usage, bounds, vaddr);
 }
 
 // ---------------------------------------------------------------------------
